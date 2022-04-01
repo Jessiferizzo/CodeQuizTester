@@ -1,6 +1,4 @@
 //array of questions and answers
-var currentQuestionsIndex=0
-
 var currentQuestions = [
     {
       question: "Commonly used data types DO Not Include_______?",
@@ -57,10 +55,12 @@ var currentQuestions = [
         correctAnswer:"console.log"
       },
   ];
-  console.log(currentQuestions);
+  
 //variables declared 
 var score=0;
 var count= 75;
+var timeLeft = 75;
+var currentQuestionsIndex=0
 
 //constants declared
 var startPage = document.querySelector("#start-page");
@@ -69,13 +69,12 @@ var timeCount = document.querySelector(".timer");
 var answerChoices = document.getElementById(".answer-choices");
 var startBtn= document.getElementById("#start-btn");
 
-//event click button starts the quiz
+//*event click button starts the quiz*//
 function startQuiz (){
     console.log("quiz begins!");
-//starting quiz starts timer
+//*starting quiz starts timer*//
 var timer = document.querySelector("header .timer");
 function countdown() {
-    var timeLeft = 75;
     console.log ("timer starts");
     
     var timeInterval = setInterval(function () {
@@ -90,6 +89,13 @@ function countdown() {
 }
 countdown ();
 
+//*when we select a choice, we check for true or false, if true submbit score, if false, subtract time*//
+
+
+
+//*load next question*//
+
+
 
 //loads first quiz questions on question box from array 
 const questionEl = document.querySelector("#question")
@@ -98,7 +104,6 @@ questionEl.textContent = currentQuestions[0].question
 //make question array display in HTML
 const answer1El = document.querySelector("#answer1");
 answer1El.textContent = currentQuestions[0].answers["a"]
-console.log(currentQuestions[0].answers["a"]);
 const answer2El = document.querySelector("#answer2");
 answer2El.textContent = currentQuestions[0].answers["b"]
 const answer3El = document.querySelector("#answer3");
@@ -113,7 +118,7 @@ function displayQuestion(){
 const questionEl = document.querySelector("#question")
 questionEl.textContent = currentQuestions[currentQuestionsIndex].question
 
-//make question array display in HTML and make into buttons
+//make question array display in answer choice buttons
 const answer1El = document.querySelector("#answer1");
 answer1El.textContent = currentQuestions[currentQuestionsIndex].answers["a"]
 const answer2El = document.querySelector("#answer2");
@@ -124,48 +129,47 @@ const answer4El = document.querySelector("#answer4");
 answer4El.textContent = currentQuestions[currentQuestionsIndex].answers["d"]
 
 currentQuestionsIndex++
-console.log(currentQuestionsIndex);
 }
 
-// the following line turns the HTMLCollection into a true JS array
-let nextQuestionBtns = new Array(...document.getElementsByClassName('answer-choices') );
-    nextQuestionBtns.forEach(function(button) {
-        // here you can attach the listeners:
-        button.onclick = function(){
-              console.log("you clicked a answer choice!",currentQuestionsIndex);
-              if(currentQuestionsIndex>=5){
-                console.log("end quiz");
-              }  
-              displayQuestion();
-              checkCorrectAnswer();  
-        }
-        });
 
-//attach listener to each choice buttons
-function eventHandler(event) {
-        var elementClicked = event.target;
-        if (nextQuestionBtns.addEventListener('click', eventHandler)){
-        checkCorrectAnswer(elementClicked);
-        console.log(elementClicked);
-        }
-   }
 
-function checkCorrectAnswer(elementClicked) {
-    //var elementClicked=element.textContent || element.innerText;
-    if (elementClicked.textContent === correctAnswer){
-     console.log(correctAnswer);
-     } else {
-        console.log("incorrect");
-    timeLeft-15
+
+var buttonClicked=$("#button-choices").click(function () {
+    console.log("answer button lives!");
+    //checkCorrectAnswer();
+    displayQuestion();
+    checkCorrectAnswer();
+})
+
+function checkCorrectAnswer() {
+    elementClicked=buttonClicked;
+    var trueAnswer=currentQuestions[currentQuestionsIndex].correctAnswer;
+    console.log(trueAnswer);
+    if (elementClicked.textContent === trueAnswer){
+        console.log([currentQuestionsIndex.correctAnswer]);
+    //add points to total storage/
+    console.log("correct");
+    }else {
+        console.log("wrong");
+        timeLeft-15;
     }
-} 
+    console.log("checked answer");
+ }
+ 
+function addEventListeners(event) {
+    var elementClicked = (event.target);
+    buttonClicked.addEventListeners('click', checkCorrectAnswer(elementClicked));
+    console.log(addEventListeners);
+    console.log(elementClicked);
+}
+
 
 //input your name to save score to local storage 
 /*$("#task-form-modal .btn-primary").click(function() {
 
 });*/
 
-//add event listener to start button 
+//*add event listener to start button*//
 $("#start-btn").click(function () {
     console.log("you clicked it!");
     $("#start-page").remove();

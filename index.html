@@ -28,23 +28,24 @@
                 <p style="font-size:3rem;text-align:left;margin-bottom:0; margin-inline-start: 1rem;padding:10px;">
                     Question</p>
             </h2>
-            <ul class="answer-choices">
-                <li class="btn" id="answer1">Answer 1</li>
-                <li class="btn" id="answer2">Answer 2</li>
-                <li class="btn" id="answer3">Answer 3</li>
-                <li class="btn" id="answer4">Answer 4</li>
+            <ul id="button-choices" class="answer-choices">
+                <button li class="btn" id="answer1">Answer 1</button>
+                <button li class="btn" id="answer2">Answer 2</button>
+                <button li class="btn" id="answer3">Answer 3</button>
+                <button li class="btn" id="answer4">Answer 4</button>
             </ul>
         </div>
-    <div class="score-display" id="result">
-    <p style="text-align:left;color:gray;font-style: italic; font-size:1.3rem;">Correct or Wrong</p>
-    </div>
-    <div>
-        <form action="/" method="post">
+        <div id="display-box" class="input-score-form">
+        <form>
             <input type="text">
-            <button></button>
+            <button class="btn">Submit</button>
           </form>
-    
-    </div>
+        </div>
+        <div class="high-scores" id="display-box">
+            <input type="text">
+            <button class="btn">Go Back</button>
+            <button class="btn">Submit High Score</button>
+        </div>
  <script src="./assets/js/script.js"></script>
 </body>
 </html>

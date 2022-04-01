@@ -78,8 +78,15 @@ body {
     padding:0;
 }
 
-#quiz-box, .score-display{
+#quiz-box, #display-box {
     display:none;
+}
+
+#display-box{
+    flex-wrap:wrap;
+    flex-direction: column;
+    margin:1.5rem;
+    width:50%;
 }
 
 /*buttons*/
