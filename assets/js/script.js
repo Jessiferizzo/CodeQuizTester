@@ -1,61 +1,61 @@
 //array of questions and answers
 var currentQuestions = [
-    {
-      question: "Commonly used data types DO Not Include_______?",
+  {
+    question: "Commonly used data types DO Not Include_______?",
+    answers: {
+      a: "strings",
+      b: "booleans",
+      c: "alerts",
+      d: "numbers",
+
+    },
+    correctAnswer:"alerts"
+  },
+  {
+    question: "The condition in an if / else statement is enclosed with _______?",
+    answers: {
+      a: "quotes",
+      b: "curly brackets",
+      c: "parenthesis",
+      d: "square brackets",
+
+    },
+    correctAnswer:"paranthesis"
+  },
+  {
+    question: "Arrays in JavaScript can be used to store_______?",
+    answers: {
+      a: "numbers and strings",
+      b: "other arravs",
+      c: "booleans",
+      d: "all of the above",
+    },
+    correctAnswer:"all of the above"
+  },
+  {
+      question: "String values must be enclosed within _______ when being assigned to variables.",
       answers: {
-        a: "strings",
-        b: "booleans",
-        c: "alerts",
-        d: "numbers",
+          a: "commas",
+          b: "curly brackets",
+          c: "quotes",
+          d: "parenthesis",
 
       },
-      correctAnswer:"alerts"
+      correctAnswer:"quotes"
     },
     {
-      question: "The condition in an if / else statement is enclosed with _______?",
+      question: "A very useful tool used during development and debugging for printing content to the debugger is:",
       answers: {
-        a: "quotes",
-        b: "curly brackets",
-        c: "parenthesis",
-        d: "square brackets",
-
+          a: "JavaScript",
+          b: "terminal/bash",
+          c: "for loops",
+          d: "console.log",
+            
       },
-      correctAnswer:"paranthesis"
+      correctAnswer:"console.log"
     },
-    {
-      question: "Arrays in JavaScript can be used to store_______?",
-      answers: {
-        a: "numbers and strings",
-        b: "other arravs",
-        c: "booleans",
-        d: "all of the above",
-      },
-      correctAnswer:"all of the above"
-    },
-    {
-        question: "String values must be enclosed within _______ when being assigned to variables.",
-        answers: {
-            a: "commas",
-            b: "curly brackets",
-            c: "quotes",
-            d: "parenthesis",
+];
 
-        },
-        correctAnswer:"quotes"
-      },
-      {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: {
-            a: "JavaScript",
-            b: "terminal/bash",
-            c: "for loops",
-            d: "console.log",
-              
-        },
-        correctAnswer:"console.log"
-      },
-  ];
-  
 //variables declared 
 var score=0;
 var count= 75;
@@ -71,21 +71,21 @@ var startBtn= document.getElementById("#start-btn");
 
 //*event click button starts the quiz*//
 function startQuiz (){
-    console.log("quiz begins!");
+  console.log("quiz begins!");
 //*starting quiz starts timer*//
 var timer = document.querySelector("header .timer");
 function countdown() {
-    console.log ("timer starts");
-    
-    var timeInterval = setInterval(function () {
-    timer.textContent = timeLeft 
-    timeLeft--;
-        if (timeLeft===0){
-            console.log("Game over");
-            timer.textContent = '';
-            clearInterval(timeInterval);
-        }
-    }, 1000);
+  console.log ("timer starts");
+  
+  var timeInterval = setInterval(function () {
+  timer.textContent = timeLeft 
+  timeLeft--;
+      if (timeLeft===0){
+          console.log("Game over");
+          timer.textContent = '';
+          clearInterval(timeInterval);
+      }
+  }, 1000);
 }
 countdown ();
 
@@ -131,51 +131,41 @@ answer4El.textContent = currentQuestions[currentQuestionsIndex].answers["d"]
 currentQuestionsIndex++
 }
 
-
-
-
 var buttonClicked=$("#button-choices").click(function () {
-    console.log("answer button lives!");
-    //checkCorrectAnswer();
-    displayQuestion();
-    checkCorrectAnswer();
+  console.log("answer button lives!");
+  var elementClicked=(EventTarget.buttonClicked)
+  checkCorrectAnswer(elementClicked);
+  displayQuestion();
 })
 
+
 function checkCorrectAnswer() {
-    elementClicked=buttonClicked;
-    var trueAnswer=currentQuestions[currentQuestionsIndex].correctAnswer;
-    console.log(trueAnswer);
-    if (elementClicked.textContent === trueAnswer){
-        console.log([currentQuestionsIndex.correctAnswer]);
-    //add points to total storage/
-    console.log("correct");
-    }else {
-        console.log("wrong");
-        timeLeft-15;
-    }
-    console.log("checked answer");
- }
- 
-function addEventListeners(event) {
-    var elementClicked = (event.target);
-    buttonClicked.addEventListeners('click', checkCorrectAnswer(elementClicked));
-    console.log(addEventListeners);
-    console.log(elementClicked);
+  var trueAnswer=currentQuestions[currentQuestionsIndex].correctAnswer;
+  console.log(trueAnswer);
+  elementClicked=buttonClicked
+  if (elementClicked.textContent === trueAnswer){
+      console.log([currentQuestionsIndex.correctAnswer]);
+  //add points to total storage/
+  console.log("correct");
+  }else {
+      console.log("wrong");
+      timeLeft-15;
+  }
+  console.log("checked answer");
 }
 
 
 //input your name to save score to local storage 
 /*$("#task-form-modal .btn-primary").click(function() {
-
 });*/
 
 //*add event listener to start button*//
 $("#start-btn").click(function () {
-    console.log("you clicked it!");
-    $("#start-page").remove();
-    console.log("page stolen");
-    document.querySelector("#quiz-box").style.display = "block";
-    console.log("returned questions box!");
-    startQuiz();
-    console.log ("quiz started!");
+  console.log("you clicked it!");
+  $("#start-page").remove();
+  console.log("page stolen");
+  document.querySelector("#quiz-box").style.display = "block";
+  console.log("returned questions box!");
+  startQuiz();
+  console.log ("quiz started!");
 })
