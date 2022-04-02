@@ -113,6 +113,7 @@ answer4El.textContent = currentQuestions[0].answers["d"]
 };
 
 function displayQuestion(){
+console.log("question popped up!");
 //loads quiz questions on question box from array 
 
 const questionEl = document.querySelector("#question")
@@ -131,20 +132,17 @@ answer4El.textContent = currentQuestions[currentQuestionsIndex].answers["d"]
 currentQuestionsIndex++
 }
 
-var buttonClicked=$("#button-choices").click(function () {
+$("#button-choices").on("click", function (event){
   console.log("answer button lives!");
-  var elementClicked=(EventTarget.buttonClicked)
-  checkCorrectAnswer(elementClicked);
-  displayQuestion();
-})
+  checkCorrectAnswer(event.target);
+});
 
 
-function checkCorrectAnswer() {
+function checkCorrectAnswer(buttonClicked) {
   var trueAnswer=currentQuestions[currentQuestionsIndex].correctAnswer;
   console.log(trueAnswer);
-  elementClicked=buttonClicked
-  if (elementClicked.textContent === trueAnswer){
-      console.log([currentQuestionsIndex.correctAnswer]);
+  console.log(buttonClicked);
+  if (buttonClicked.innerHTML === trueAnswer){
   //add points to total storage/
   console.log("correct");
   }else {
@@ -152,6 +150,7 @@ function checkCorrectAnswer() {
       timeLeft-15;
   }
   console.log("checked answer");
+  displayQuestion();
 }
 
 
